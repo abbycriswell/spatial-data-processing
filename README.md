@@ -1,6 +1,6 @@
 # Species Spaces
 
-## Using shape files from IUCN database to determine habitat area (km²) for a given species.
+### Using shape files from IUCN database to determine habitat area (km²) for a given species.
 
 made by Abby Criswell
 with the Havird Lab at
