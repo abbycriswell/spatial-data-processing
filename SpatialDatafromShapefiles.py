@@ -1,3 +1,4 @@
+# Species Shapes
 # made by Abby Criswell
 # with the Havird Lab at
 # the University of Texas at Austin
@@ -17,9 +18,9 @@ import geopandas
 #shapefile_path: folder containing shapefile folders (labeled by species)
 #specieslist_path: path to csv file with list of species to try
 
-path="./Anura/"
-shapefile_path = path + "anura_shapefiles/"
-specieslist_path = path + "anura_specieslist.csv"
+path="./Example/"
+shapefile_path = "./Example/" + "Data_Folder/"
+specieslist_path = "./Example/" + "specieslist.csv"
 
 print("Starting...\nPath: ", path)
 
