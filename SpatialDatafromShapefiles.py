@@ -11,6 +11,7 @@ import geopandas
 # run in command line: python SpatialDatafromShapefiles.py
 # after changing path variables (path, shapefile_path, specieslist_path)
 # and range types of interest list variable (range_types_of_interest)
+# in the sections directly below
 
 #PATH VARIABLES:
 #CHANGE THESE AS NEEDED
@@ -32,9 +33,9 @@ current_range_types = ["extant (resident)", "extant (breeding)", "probably extan
 custom_range_types = []
 
 #SELECT RANGE TYPE LIST TO USE:
-#CHANGE THIS AS NEEDED (use default lists provided or custom list)
+#CHANGE THIS AS NEEDED (use default lists provided or custom list from range type groups section above)
 #defaults to historical range group
-area_types_of_interest = historical_range_types
+range_types_of_interest = historical_range_types
 
 
 print("Starting...\nPath: ", path)
@@ -73,7 +74,7 @@ for species in lookingfor_species:
         #only keep ranges of types we're interested in
         for index, entry in species_range_data.iterrows():
             label = entry["LEGEND"].lower()
-            if label not in area_types_of_interest:
+            if label not in range_types_of_interest:
                 species_range_data.drop(index, inplace=True)
                 print(label)
 
