@@ -29,11 +29,11 @@ updated 5-4-2023
            [Example: "./Example/specieslist.csv" reads list file as shown in example files in repository.]
  6) change range types of interest variable in SpatialDatafromShapefiles.py
      - range_types_of_interest: list of types of ranges to include in the area calculation
-          - choose from the default groups of types provided or make a custom list of types)
-	  - defaults provided:
-                - historical range: includes extant and extinct resident and breeding areas (includes reintroducted and origin uncertain, but not introduced, non-breeding, vagrant, or passage)
-                - current range: includes extant resident and breeding areas (includes introduced, reintroduced, possibly extinct, and origin uncertain, but not extinct, non-breeding, vagrant, or passage)
-                - total range: includes all types of ranges
+	- choose from the default groups of types provided or make a custom list of types)
+	- defaults provided:
+		- historical range: includes extant and extinct resident and breeding areas (includes reintroducted and origin uncertain, but not introduced, non-breeding, vagrant, or passage)
+		- current range: includes extant resident and breeding areas (includes introduced, reintroduced, possibly extinct, and origin uncertain, but not extinct, non-breeding, vagrant, or passage)
+		- total range: includes all types of ranges
  7) run SpatialDatafromShapefiles.py
  8) output:
      - Species area results listed in 'species_info.tsv' [See the example file 'species_info.tsv' in repository.]
