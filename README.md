@@ -9,7 +9,7 @@ updated 10-2-2023
 
 ## Dependencies: 
 - python
-- geopandas 0.9.0 +
+- geopandas 0.13.2 +
 
 ## To Use:
  1) download SpatialDatafromShapefiles.py 
