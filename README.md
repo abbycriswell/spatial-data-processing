@@ -5,7 +5,7 @@
 made by Abby Criswell
 with the Havird Lab at
 the University of Texas at Austin
-updated 5-4-2023
+updated 10-2-2023
 
 ## Dependencies: 
 - python
@@ -18,15 +18,15 @@ updated 5-4-2023
  3) gather folder containing folders (name: species) with shapefile (1 per species, name: 'data_0.shp') 
    [This should be the default file structure when downloading shapefiles from IUCN.]
    [Example: For the species Bufo japonicus, need the file Data_Folder/Bufo japonicus/data_0.shp. See example files in repository.]
- 4) gather list of species to process as a csv file (defaults to not reading first line for column headers)
-   [See the example file 'specieslist.csv' in repository.]
+ 4) gather list of species to process as a tsv file (defaults to not reading first line for column headers)
+   [See the example file 'specieslist.tsv' in repository.]
  5) change path variables in SpatialDatafromShapefiles.py
      - path: where output should be put 
            [Example: "./Example/" puts output as shown in example files in repository.]
      - shapefile_path: folder containing shapefile folders (labeled by species)
            [Example: "./Example/Data_Folder/" takes in shapefiles as shown in example files in repository.]
      - specieslist_path: path to csv file with list of species to try
-           [Example: "./Example/specieslist.csv" reads list file as shown in example files in repository.]
+           [Example: "./Example/specieslist.tsv" reads list file as shown in example files in repository.]
  6) change range types of interest variable in SpatialDatafromShapefiles.py
      - range_types_of_interest: list of types of ranges to include in the area calculation
 	- choose from the default groups of types provided or make a custom list of types)
