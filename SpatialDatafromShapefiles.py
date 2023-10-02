@@ -20,7 +20,7 @@ path="./Example/"
 #shapefile_path: folder containing shapefile folders (labeled by species)
 shapefile_path = "./Example/" + "Data_Folder/"
 #specieslist_path: path to csv file with list of species to try
-specieslist_path = "./Example/" + "specieslist.csv"
+specieslist_path = "./Example/" + "specieslist.tsv"
 
 #RANGE TYPE GROUPS:
 #all: all range types
@@ -38,14 +38,14 @@ custom_range_types = []
 range_types_of_interest = historical_range_types
 
 
-print("Starting...\nPath: ", path)
+print("\nStarting...\nPath: ", path)
 
 #get list of species to process
 lookingfor_species = []
-with open(specieslist_path) as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=',')
+with open(specieslist_path) as tsv_file:
+    tsv_reader = csv.reader(tsv_file, delimiter='\t')
     line_count = 0
-    for row in csv_reader:
+    for row in tsv_reader:
         if line_count == 0:
             line_count += 1
         else:
@@ -57,7 +57,7 @@ haveinfofor_species = [f for f in listdir(shapefile_path) if isdir(join(shapefil
 #set up species_info output file
 species_count = 0
 info_file = open(path + "species_info.tsv", "w")
-info_file.write("Species\tTotal Area (sq km)\t+/-\tMin Lat\t+/-\tMax Lat\t# Ranges Included\t# Ranges Excluded (Introduced)\n")
+info_file.write("Species\tTotal Area (sq km)\t+/-\tMin Lat\t+/-\tMax Lat\t# Ranges Included\tRange Labels Included\t# Ranges Excluded (Introduced)\t Range Labels Excluded\n")
 
 #set up species_notfound output file
 donthaveinfofor_species = []
@@ -72,11 +72,21 @@ for species in lookingfor_species:
         species_range_data = geopandas.read_file(shapefile_path + species + "/data_0.shp")
 
         #only keep ranges of types we're interested in
+        kept_range_count = 0
+        kept_range_labels = []
+        removed_range_count = 0
+        removed_range_labels = []
         for index, entry in species_range_data.iterrows():
             label = entry["LEGEND"].lower()
             if label not in range_types_of_interest:
                 species_range_data.drop(index, inplace=True)
-                print(label)
+                removed_range_count += 1
+                if label not in removed_range_labels:
+                    removed_range_labels.append(label)
+            else:
+                kept_range_count += 1
+                if label not in kept_range_labels:
+                    kept_range_labels.append(label)
 
         #find bounds of range
         species_range_bounds = species_range_data.bounds
@@ -127,8 +137,9 @@ for species in lookingfor_species:
             donthaveinfofor_file.write(species + "\n")
         else:
             #record species info
-            info = [species, str(area_total), min_sign, str(min_lat), max_sign, str(max_lat), str(og_count), str(introduced_count)]
+            info = [species, str(area_total), min_sign, str(min_lat), max_sign, str(max_lat), str(kept_range_count), str(kept_range_labels), str(removed_range_count), str(removed_range_labels)]
             info_file.write('\t'.join(info) + "\n")
+            species_count += 1
 
     else:
         #error finding shapefile folder
@@ -138,4 +149,4 @@ for species in lookingfor_species:
 info_file.close()
 donthaveinfofor_file.close()
 
-print("Done! Processed ", species_count, " species' shapefiles. ", species_notfound_count, "species' shapefiles could not be found.\nOutput:\n- Species info output to 'path\species_info.tsv'. \n- Any species that did not have a shapefile are listed in 'path\species_notfound.txt'.")
+print("\nDone! \nProcessed ", species_count, " species' shapefile(s). ", species_notfound_count, "species' shapefile(s) could not be processed.\n\nOutput:\n- Species info output to 'path\species_info.tsv'. \n- Species that could not be processed are listed in 'path\species_notfound.txt'.\n")

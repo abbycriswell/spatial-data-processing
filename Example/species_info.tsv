@@ -1,2 +1,2 @@
-Species	Area (sq km)	+/-	Min Lat	+/-	Max Lat
-Bufo japonicus	90886.13615847842	+	30.224445343077775	+	44.01502396108663
+Species	Total Area (sq km)	+/-	Min Lat	+/-	Max Lat	# Ranges Included	Range Labels Included	# Ranges Excluded (Introduced)	 Range Labels Excluded
+Bufo japonicus	287692.6406827162	+	30.224445343077775	+	41.546222687127	3	['extant (resident)']	2	['extant & introduced (resident)']
