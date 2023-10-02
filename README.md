@@ -35,7 +35,8 @@ updated 10-2-2023
 		- current range: includes extant resident and breeding areas (includes introduced, reintroduced, possibly extinct, and origin uncertain, but not extinct, non-breeding, vagrant, or passage)
 		- total range: includes all types of ranges
  7) run SpatialDatafromShapefiles.py
- 8) output:
+     - can do this by navigating to this file in terminal and using this command: python SpatialDatafromShapefiles.py
+ 9) output:
      - Species area results listed in 'species_info.tsv' [See the example file 'species_info.tsv' in repository.]
      - If analysis for a species was unsuccessful (data missing, mislabeled, computation error), listed in 'species_notfound.txt' [See the example file 'species_info.tsv' in repository.]
 
